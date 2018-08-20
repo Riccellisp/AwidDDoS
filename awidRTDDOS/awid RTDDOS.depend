@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1534800231 source:/home/riccelli/Documentos/awid RTDDOS/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdbool.h>
+	<stdint.h>
+	<inttypes.h>
+
