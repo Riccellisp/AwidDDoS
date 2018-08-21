@@ -82,11 +82,11 @@ int main(void)
     bool 	wlan_fc_protected	;
     bool 	wlan_fc_order	;
     unsigned int 	wlan_duration	;
-    char 	wlan_ra[17]	;//Receiver address	(Ethernet or other MAC address)
-    char	wlan_da[17] 	; //Destination address (Ethernet or other MAC address)
-    char 	wlan_ta[17]	; // Transmitter address (Ethernet or other MAC address)
-    char 	wlan_sa[17]	;// Source address ((Ethernet or other MAC address))
-    char 	wlan_bssid[17]	; //	BSS Id
+    char 	wlan_ra[18]	;//Receiver address	(Ethernet or other MAC address)
+    char	wlan_da[18] 	; //Destination address (Ethernet or other MAC address)
+    char 	wlan_ta[18]	; // Transmitter address (Ethernet or other MAC address)
+    char 	wlan_sa[18]	;// Source address ((Ethernet or other MAC address))
+    char 	wlan_bssid[18]	; //	BSS Id
     unsigned int 	wlan_frag	;
     unsigned int 	wlan_seq	;
     unsigned int 	wlan_bar_type	;
@@ -182,10 +182,10 @@ int main(void)
             //104 - 139
             //140 -  155
             sscanf(linha,"%u,%i,%f,%f,%f,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,\
-            %d,%d,%x,%d,%d,%d,%u,%d,%d,%d,%d,%d,%d,%d,%i,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%i,%i,%i,%i,%i,%d\
-            ,%x,%d,%d,%d,%d,%d,%d,%u,%s,%s,%s,%s,%s,%d,%i,%i,%d,%d,%d,%i,%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%i,%d,%i,%i,%i,\
-            %i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%s,%i,%i,%i,%i,%i,%i,%i,%d,%d,%i,%i,%d,%d,%d,%i,%i,%i,%i,%i,%i,%i,\
-            %i,%i,%d,%i,%d,%d,%d,%i,%d,%i,%d,%d,%u,%d,%d,%s\n",&dataset.frame_interface_id,&dataset.frame_dlt,&dataset.frame_offset_shift,\
+            %d,%d,%x,%d,%d,%d,%u,%d,%d,%d,%d,%d,%d,%d,%i,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%i,%i,%i,%i,%i,%d\
+            ,%x,%d,%d,%d,%d,%d,%d,%u,%[^,],%[^,],%[^,],%[^,],%[^,],%d,%i,%i,%d,%d,%d,%i,%[^,],%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%i,%d,%i,%i,%i,\
+            %i,%[^,],%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%[^,],%i,%i,%i,%i,%i,%i,%i,%d,%d,%i,%i,%d,%d,%d,%i,%i,%i,%i,%i,%i,%i,\
+            %i,%i,%d,%i,%[^,],%d,%d,%i,%d,%i,%d,%d,%u,%d,%d,%[^,]\n",&dataset.frame_interface_id,&dataset.frame_dlt,&dataset.frame_offset_shift,\
              &dataset.frame_time_epoch,&dataset.frame_time_delta,&dataset.frame_time_delta_displayed,&dataset.frame_time_relative,\
              &dataset.frame_len, &dataset.frame_cap_len,&dataset.frame_marked,&dataset.frame_ignored,&dataset.radiotap_version,\
             &dataset.radiotap_pad,&dataset.radiotap_length,&dataset.radiotap_present_tsft,&dataset.radiotap_present_flags,\
@@ -208,8 +208,8 @@ int main(void)
             &dataset.radiotap_rxflags_badplcp,&dataset.wlan_fc_type_subtype,&dataset.wlan_fc_version,\
             &dataset.wlan_fc_type,&dataset.wlan_fc_subtype,&dataset.wlan_fc_ds,\
             &dataset.wlan_fc_frag,&dataset.wlan_fc_retry,&dataset.wlan_fc_pwrmgt,&dataset.wlan_fc_moredata,\
-            &dataset.wlan_fc_protected,&dataset.wlan_fc_order,&dataset.wlan_duration,&dataset.wlan_ra,\
-            &dataset.wlan_da,&dataset.wlan_ta,&dataset.wlan_sa,&dataset.wlan_bssid,\
+            &dataset.wlan_fc_protected,&dataset.wlan_fc_order,&dataset.wlan_duration,dataset.wlan_ra,\
+            dataset.wlan_da,dataset.wlan_ta,dataset.wlan_sa,dataset.wlan_bssid,\
             &dataset.wlan_frag,&dataset.wlan_seq,&dataset.wlan_bar_type,&dataset.wlan_ba_control_ackpolicy,\
             &dataset.wlan_ba_control_multitid,&dataset.wlan_ba_control_cbitmap,&dataset.wlan_bar_compressed_tidinfo,\
             &dataset.wlan_ba_bm, &dataset.wlan_fcs_good,&dataset.wlan_mgt_fixed_capabilities_ess,\
@@ -236,7 +236,7 @@ int main(void)
             &dataset.wlan_wep_iv,&dataset.wlan_wep_key,&dataset.wlan_wep_icv,&dataset.wlan_tkip_extiv,&dataset.wlan_ccmp_extiv,\
             &dataset.wlan_qos_tid,&dataset.wlan_qos_priority,&dataset.wlan_qos_eosp,&dataset.wlan_qos_ack,\
             &dataset.wlan_qos_amsdupresent,&dataset.wlan_qos_buf_state_indicated0,&dataset.wlan_qos_bit4,&dataset.wlan_qos_txop_dur_req,\
-            &dataset.wlan_qos_buf_state_indicated1,&dataset.data_len,&dataset.classification);
+            &dataset.wlan_qos_buf_state_indicated1,&dataset.data_len,dataset.classification);
 
 
 //			printf("%i teve media %.2f\n", testando.a, testando.d);
@@ -244,6 +244,6 @@ int main(void)
 }
 	fclose(arq);
 	printf("coisa");
-    printf("%s", dataset.wlan_ra);
+    //printf("%[^,]", dataset.wlan_ra);
     return 0;
 }
