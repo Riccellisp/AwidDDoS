@@ -89,68 +89,68 @@ int main(void)
     char 	wlan_bssid[18]	; //	BSS Id
     unsigned int 	wlan_frag	;
     unsigned int 	wlan_seq	;
-    unsigned int 	wlan_bar_type	;
-    bool 	wlan_ba_control_ackpolicy	;
-    bool 	wlan_ba_control_multitid	;
-    bool 	wlan_ba_control_cbitmap	;
-    unsigned int  	wlan_bar_compressed_tidinfo	;
-    char  	wlan_ba_bm[16]	;
+    char 	wlan_bar_type[1]	;
+    char 	wlan_ba_control_ackpolicy[1]	;
+    char 	wlan_ba_control_multitid[1]	;
+    char 	wlan_ba_control_cbitmap[1]	;
+    char  	wlan_bar_compressed_tidinfo[1]	;
+    char  	wlan_ba_bm[1]	;
     bool 	wlan_fcs_good	;
-    bool 	wlan_mgt_fixed_capabilities_ess	;
-    bool 	wlan_mgt_fixed_capabilities_ibss	;
-    unsigned int 	wlan_mgt_fixed_capabilities_cfpoll_ap	;
-    bool 	wlan_mgt_fixed_capabilities_privacy	;
-    bool 	wlan_mgt_fixed_capabilities_preamble	;
-    bool 	wlan_mgt_fixed_capabilities_pbcc	;
-    bool 	wlan_mgt_fixed_capabilities_agility	;
-    bool 	wlan_mgt_fixed_capabilities_spec_man	;
-    bool 	wlan_mgt_fixed_capabilities_short_slot_time	;
-    bool 	wlan_mgt_fixed_capabilities_apsd	;
-    bool 	wlan_mgt_fixed_capabilities_radio_measurement	;
-    bool 	wlan_mgt_fixed_capabilities_dsss_ofdm	;
-    bool 	wlan_mgt_fixed_capabilities_del_blk_ack	;
-    bool 	wlan_mgt_fixed_capabilities_imm_blk_ack	;
-    unsigned int  	wlan_mgt_fixed_listen_ival	;
-    char 	wlan_mgt_fixed_current_ap[20]	; // Current AP(Ethernet or MAC addres)
-    unsigned int 	wlan_mgt_fixed_status_code	;
-    unsigned int 	wlan_mgt_fixed_timestamp	;
-    unsigned int 	wlan_mgt_fixed_beacon	;
-    unsigned int  	wlan_mgt_fixed_aid	;
-    unsigned int 	wlan_mgt_fixed_reason_code	;
-    unsigned int 	wlan_mgt_fixed_auth_alg	;
-    unsigned int 	wlan_mgt_fixed_auth_seq	;
-    unsigned int 	wlan_mgt_fixed_category_code	;
-    unsigned int 	wlan_mgt_fixed_htact	;
-    unsigned int 	wlan_mgt_fixed_chanwidth	;
-    unsigned int 	wlan_mgt_fixed_fragment	;
-    unsigned int  	wlan_mgt_fixed_sequence	;
-    char	wlan_mgt_tagged_all[20] 	;
-    char 	wlan_mgt_ssid[30]	;
-    unsigned int 	wlan_mgt_ds_current_channel	;
-    unsigned int 	wlan_mgt_tim_dtim_count	;
-    unsigned int 	wlan_mgt_tim_dtim_period	;
-    bool 	wlan_mgt_tim_bmapctl_multicast	;
-    unsigned int 	wlan_mgt_tim_bmapctl_offset	;
-    unsigned int 	wlan_mgt_country_info_environment	;
-    unsigned int  	wlan_mgt_rsn_version	;
-    unsigned int 	wlan_mgt_rsn_gcs_type	;
-    unsigned int 	wlan_mgt_rsn_pcs_count	;
-    unsigned int 	wlan_mgt_rsn_akms_count	;
-    unsigned int 	wlan_mgt_rsn_akms_type	;
-    bool 	wlan_mgt_rsn_capabilities_preauth	;
-    bool 	wlan_mgt_rsn_capabilities_no_pairwise	;
-    unsigned int 	wlan_mgt_rsn_capabilities_ptksa_replay_counter	;
-    unsigned int 	wlan_mgt_rsn_capabilities_gtksa_replay_counter	;
-    bool 	wlan_mgt_rsn_capabilities_mfpr	;
-    bool 	wlan_mgt_rsn_capabilities_mfpc	;
-    bool 	wlan_mgt_rsn_capabilities_peerkey	;
-    int 	wlan_mgt_tcprep_trsmt_pow	;
-    int 	wlan_mgt_tcprep_link_mrg	;
+    char 	wlan_mgt_fixed_capabilities_ess[1]	;
+    char 	wlan_mgt_fixed_capabilities_ibss[1]	;
+    char wlan_mgt_fixed_capabilities_cfpoll_ap[1]	;
+    char 	wlan_mgt_fixed_capabilities_privacy[1]	;
+    char 	wlan_mgt_fixed_capabilities_preamble[1]	;
+    char 	wlan_mgt_fixed_capabilities_pbcc[1]	;
+    char 	wlan_mgt_fixed_capabilities_agility	[1];
+    char 	wlan_mgt_fixed_capabilities_spec_man[1]	;
+    char 	wlan_mgt_fixed_capabilities_short_slot_time	[1];
+    char 	wlan_mgt_fixed_capabilities_apsd[1]	;
+    char 	wlan_mgt_fixed_capabilities_radio_measurement[1]	;
+    char 	wlan_mgt_fixed_capabilities_dsss_ofdm[1]	;
+    char 	wlan_mgt_fixed_capabilities_del_blk_ack[1]	;
+    char 	wlan_mgt_fixed_capabilities_imm_blk_ack	[1];
+    char  	wlan_mgt_fixed_listen_ival[1]	;
+    char 	wlan_mgt_fixed_current_ap[1]	; // Current AP(Ethernet or MAC addres)
+    char wlan_mgt_fixed_status_code[1]	;
+    char 	wlan_mgt_fixed_timestamp[1]	;
+    char 	wlan_mgt_fixed_beacon[1]	;
+    char  	wlan_mgt_fixed_aid[1]	;
+    char 	wlan_mgt_fixed_reason_code[1]	;
+    char 	wlan_mgt_fixed_auth_alg[1]	;
+    char 	wlan_mgt_fixed_auth_seq	[1];
+    char 	wlan_mgt_fixed_category_code[1]	;
+    char 	wlan_mgt_fixed_htact[1]	;
+    char 	wlan_mgt_fixed_chanwidth[1]	;
+    char 	wlan_mgt_fixed_fragment[1]	;
+    char  	wlan_mgt_fixed_sequence	[1];
+    char	wlan_mgt_tagged_all[1] 	;
+    char 	wlan_mgt_ssid[1]	;
+    char 	wlan_mgt_ds_current_channel[1]	;
+    char 	wlan_mgt_tim_dtim_count[1]	;
+    char 	wlan_mgt_tim_dtim_period[1]	;
+    char 	wlan_mgt_tim_bmapctl_multicast[1]	;
+    char 	wlan_mgt_tim_bmapctl_offset[1]	;
+    char 	wlan_mgt_country_info_environment[1]	;
+    char  	wlan_mgt_rsn_version[1]	;
+    char 	wlan_mgt_rsn_gcs_type[1]	;
+    char 	wlan_mgt_rsn_pcs_count[1]	;
+    char 	wlan_mgt_rsn_akms_count[1]	;
+    char 	wlan_mgt_rsn_akms_type[1]	;
+    char 	wlan_mgt_rsn_capabilities_preauth[1]	;
+    char 	wlan_mgt_rsn_capabilities_no_pairwise[1]	;
+    char 	wlan_mgt_rsn_capabilities_ptksa_replay_counter[1]	;
+    char 	wlan_mgt_rsn_capabilities_gtksa_replay_counter[1]	;
+    char 	wlan_mgt_rsn_capabilities_mfpr[1]	;
+    char 	wlan_mgt_rsn_capabilities_mfpc[1]	;
+    char 	wlan_mgt_rsn_capabilities_peerkey[1]	;
+    char 	wlan_mgt_tcprep_trsmt_pow[1]	;
+    char 	wlan_mgt_tcprep_link_mrg[1]	;//AQUII
     unsigned int 	wlan_wep_iv	;
     unsigned int 	wlan_wep_key	;
     unsigned int 	wlan_wep_icv	;
-    char 	wlan_tkip_extiv[20]	;
-    char 	wlan_ccmp_extiv[20]	;
+    char 	wlan_tkip_extiv[1]	;
+    char 	wlan_ccmp_extiv[1]	;
     unsigned int 	wlan_qos_tid	;
     unsigned int 	wlan_qos_priority	;
     bool 	wlan_qos_eosp	;
@@ -183,9 +183,9 @@ int main(void)
             //140 -  155
             sscanf(linha,"%u,%i,%f,%f,%f,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,\
             %d,%d,%x,%d,%d,%d,%u,%d,%d,%d,%d,%d,%d,%d,%i,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%i,%i,%i,%i,%i,%d\
-            ,%x,%d,%d,%d,%d,%d,%d,%u,%[^,],%[^,],%[^,],%[^,],%[^,],%d,%i,%i,%d,%d,%d,%i,%[^,],%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%i,%d,%i,%i,%i,\
-            %i,%[^,],%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%[^,],%i,%i,%i,%i,%i,%i,%i,%d,%d,%i,%i,%d,%d,%d,%i,%i,%i,%i,%i,%i,%i,\
-            %i,%i,%d,%i,%[^,],%d,%d,%i,%d,%i,%d,%d,%u,%d,%d,%[^,]\n",&dataset.frame_interface_id,&dataset.frame_dlt,&dataset.frame_offset_shift,\
+            ,%x,%d,%d,%d,%d,%d,%d,%u,%[^,],%[^,],%[^,],%[^,],%[^,],%d,%i,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%d,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
+            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%c,%[^,],%[^,],%[^,],%[^,],\
+            %x,%i,%d,%i,%[^,],%d,%d,%i,%d,%i,%d,%d,%d,%d,%i,%s\n",&dataset.frame_interface_id,&dataset.frame_dlt,&dataset.frame_offset_shift,\
              &dataset.frame_time_epoch,&dataset.frame_time_delta,&dataset.frame_time_delta_displayed,&dataset.frame_time_relative,\
              &dataset.frame_len, &dataset.frame_cap_len,&dataset.frame_marked,&dataset.frame_ignored,&dataset.radiotap_version,\
             &dataset.radiotap_pad,&dataset.radiotap_length,&dataset.radiotap_present_tsft,&dataset.radiotap_present_flags,\
@@ -231,7 +231,7 @@ int main(void)
             &dataset.wlan_mgt_rsn_pcs_count,&dataset.wlan_mgt_rsn_akms_count,&dataset.wlan_mgt_rsn_akms_type,\
             &dataset.wlan_mgt_rsn_capabilities_preauth,&dataset.wlan_mgt_rsn_capabilities_no_pairwise,\
             &dataset.wlan_mgt_rsn_capabilities_ptksa_replay_counter,&dataset.wlan_mgt_rsn_capabilities_gtksa_replay_counter,\
-            &dataset.wlan_mgt_rsn_capabilities_mfpr,&dataset.wlan_mgt_rsn_capabilities_mfpc,\
+            dataset.wlan_mgt_rsn_capabilities_mfpr,&dataset.wlan_mgt_rsn_capabilities_mfpc,\
             &dataset.wlan_mgt_rsn_capabilities_peerkey,&dataset.wlan_mgt_tcprep_trsmt_pow,&dataset.wlan_mgt_tcprep_link_mrg,\
             &dataset.wlan_wep_iv,&dataset.wlan_wep_key,&dataset.wlan_wep_icv,&dataset.wlan_tkip_extiv,&dataset.wlan_ccmp_extiv,\
             &dataset.wlan_qos_tid,&dataset.wlan_qos_priority,&dataset.wlan_qos_eosp,&dataset.wlan_qos_ack,\
@@ -244,6 +244,5 @@ int main(void)
 }
 	fclose(arq);
 	printf("coisa");
-    //printf("%[^,]", dataset.wlan_ra);
     return 0;
 }
