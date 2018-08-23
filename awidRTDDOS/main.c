@@ -112,7 +112,7 @@ int main(void)
     char 	wlan_mgt_fixed_capabilities_imm_blk_ack	[1];
     char  	wlan_mgt_fixed_listen_ival[1]	;
     char 	wlan_mgt_fixed_current_ap[1]	; // Current AP(Ethernet or MAC addres)
-    char wlan_mgt_fixed_status_code[1]	;
+    char    wlan_mgt_fixed_status_code[1]	;
     char 	wlan_mgt_fixed_timestamp[1]	;
     char 	wlan_mgt_fixed_beacon[1]	;
     char  	wlan_mgt_fixed_aid[1]	;
@@ -145,23 +145,23 @@ int main(void)
     char 	wlan_mgt_rsn_capabilities_mfpc[1]	;
     char 	wlan_mgt_rsn_capabilities_peerkey[1]	;
     char 	wlan_mgt_tcprep_trsmt_pow[1]	;
-    char 	wlan_mgt_tcprep_link_mrg[1]	;//AQUII
-    unsigned int 	wlan_wep_iv	;
-    unsigned int 	wlan_wep_key	;
-    unsigned int 	wlan_wep_icv	;
+    char 	wlan_mgt_tcprep_link_mrg[1]	;
+    char 	wlan_wep_iv[8]	;
+    char 	wlan_wep_key[1]	;
+    char 	wlan_wep_icv[1]	;
     char 	wlan_tkip_extiv[1]	;
     char 	wlan_ccmp_extiv[1]	;
-    unsigned int 	wlan_qos_tid	;
-    unsigned int 	wlan_qos_priority	;
-    bool 	wlan_qos_eosp	;
-    unsigned int 	wlan_qos_ack	;
-    bool 	wlan_qos_amsdupresent	;
-    bool 	wlan_qos_buf_state_indicated0	;
-    bool 	wlan_qos_bit4	;
-    unsigned int 	wlan_qos_txop_dur_req	;
-    bool 	wlan_qos_buf_state_indicated1	;
+    char 	wlan_qos_tid[1]	;
+    char 	wlan_qos_priority[1]	;
+    char 	wlan_qos_eosp[1]	;
+    char 	wlan_qos_ack[6]	;
+    char 	wlan_qos_amsdupresent[1]	;
+    char 	wlan_qos_buf_state_indicated0[1]	;
+    char 	a[1]	;
+    char 	wlan_qos_txop_dur_req[1]	;
+    char 	wlan_qos_buf_state_indicated1[1]	;
     int 	data_len	;
-    char 	classification[7]	;
+    char 	classification[6]	;
     }Awid;
 
     Awid dataset;
@@ -184,8 +184,8 @@ int main(void)
             sscanf(linha,"%u,%i,%f,%f,%f,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,\
             %d,%d,%x,%d,%d,%d,%u,%d,%d,%d,%d,%d,%d,%d,%i,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%i,%i,%i,%i,%i,%d\
             ,%x,%d,%d,%d,%d,%d,%d,%u,%[^,],%[^,],%[^,],%[^,],%[^,],%d,%i,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%d,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
-            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%c,%[^,],%[^,],%[^,],%[^,],\
-            %x,%i,%d,%i,%[^,],%d,%d,%i,%d,%i,%d,%d,%d,%d,%i,%s\n",&dataset.frame_interface_id,&dataset.frame_dlt,&dataset.frame_offset_shift,\
+            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
+            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%i,%[^,]\n",&dataset.frame_interface_id,&dataset.frame_dlt,&dataset.frame_offset_shift,\
              &dataset.frame_time_epoch,&dataset.frame_time_delta,&dataset.frame_time_delta_displayed,&dataset.frame_time_relative,\
              &dataset.frame_len, &dataset.frame_cap_len,&dataset.frame_marked,&dataset.frame_ignored,&dataset.radiotap_version,\
             &dataset.radiotap_pad,&dataset.radiotap_length,&dataset.radiotap_present_tsft,&dataset.radiotap_present_flags,\
@@ -235,14 +235,13 @@ int main(void)
             &dataset.wlan_mgt_rsn_capabilities_peerkey,&dataset.wlan_mgt_tcprep_trsmt_pow,&dataset.wlan_mgt_tcprep_link_mrg,\
             &dataset.wlan_wep_iv,&dataset.wlan_wep_key,&dataset.wlan_wep_icv,&dataset.wlan_tkip_extiv,&dataset.wlan_ccmp_extiv,\
             &dataset.wlan_qos_tid,&dataset.wlan_qos_priority,&dataset.wlan_qos_eosp,&dataset.wlan_qos_ack,\
-            &dataset.wlan_qos_amsdupresent,&dataset.wlan_qos_buf_state_indicated0,&dataset.wlan_qos_bit4,&dataset.wlan_qos_txop_dur_req,\
-            &dataset.wlan_qos_buf_state_indicated1,&dataset.data_len,dataset.classification);
-
-
+            &dataset.wlan_qos_amsdupresent,&dataset.wlan_qos_buf_state_indicated0,&dataset.a,\
+            &dataset.wlan_qos_txop_dur_req,&dataset.wlan_qos_buf_state_indicated1,\
+            &dataset.data_len,&dataset.classification);
 //			printf("%i teve media %.2f\n", testando.a, testando.d);
 
 }
 	fclose(arq);
-	printf("coisa");
+	printf("a coiisa eh: %c",dataset.classification);
     return 0;
 }
