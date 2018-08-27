@@ -1,101 +1,101 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
-#include<stdbool.h>
+#include<stdint.h>
 #include<stdint.h>
 #include <inttypes.h>
 int main(void)
 {
     typedef struct {
-    unsigned int frame_interface_id;
-    int 	     frame_dlt;
-    float 	frame_offset_shift;
-    float 	frame_time_epoch;
-    float 	frame_time_delta;
-    float 	frame_time_delta_displayed;
-    float 	frame_time_relative;
-    unsigned int  	frame_len;
-    unsigned int  	frame_cap_len;
-    bool 	frame_marked	;
-    bool 	frame_ignored	;
-    unsigned int 	radiotap_version	;
-    unsigned int 	radiotap_pad	;
-    unsigned int 	radiotap_length	;//parei
-    bool 	radiotap_present_tsft	;
-    bool 	radiotap_present_flags	;
-    bool 	radiotap_present_rate	;
-    bool 	radiotap_present_channel	;
-    bool 	radiotap_present_fhss	;
-    bool 	radiotap_present_dbm_antsignal	;
-    bool 	radiotap_present_dbm_antnoise	;
-    bool 	radiotap_present_lock_quality	;
-    bool 	radiotap_present_tx_attenuation	;
-    bool 	radiotap_present_db_tx_attenuation	;
-    bool 	radiotap_present_dbm_tx_power	;
-    bool 	radiotap_present_antenna	;
-    bool 	radiotap_present_db_antsignal	;
-    bool 	radiotap_present_db_antnoise	;
-    bool 	radiotap_present_rxflags	;
-    bool 	radiotap_present_xchannel	;
-    bool 	radiotap_present_mcs	;
-    bool 	radiotap_present_ampdu	;
-    bool 	radiotap_present_vht	;
-    unsigned int	radiotap_present_reserved	;
-    bool 	radiotap_present_rtap_ns	;
-    bool 	radiotap_present_vendor_ns	;
-    bool 	radiotap_present_ext	;
-    unsigned int 	radiotap_mactime	;
-    bool 	radiotap_flags_cfp	;
-    bool 	radiotap_flags_preamble	;
-    bool 	radiotap_flags_wep	;
-    bool 	radiotap_flags_frag	;
-    bool 	radiotap_flags_fcs	;
-    bool 	radiotap_flags_datapad	;
-    bool 	radiotap_flags_badfcs	;
-    bool 	radiotap_flags_shortgi	;
-    float 	radiotap_datarate	;
-    unsigned int  	radiotap_channel_freq	;
-    bool 	radiotap_channel_type_turbo	;
-    bool 	radiotap_channel_type_cck	;
-    bool 	radiotap_channel_type_ofdm	;
-    bool 	radiotap_channel_type_2ghz	;
-    bool 	radiotap_channel_type_5ghz	;
-    bool 	radiotap_channel_type_passive	;
-    bool 	radiotap_channel_type_dynamic	;
-    bool 	radiotap_channel_type_gfsk	;
-    bool 	radiotap_channel_type_gsm	;
-    bool 	radiotap_channel_type_sturbo	;
-    bool 	radiotap_channel_type_half	;
-    bool 	radiotap_channel_type_quarter	;
-    int 	radiotap_dbm_antsignal	;
-    unsigned int 	radiotap_antenna	;
-    bool 	radiotap_rxflags_badplcp	;
-    unsigned int 	wlan_fc_type_subtype	;
-    unsigned int 	wlan_fc_version	;
-    unsigned int 	wlan_fc_type	;
-    unsigned int 	wlan_fc_subtype	;
-    unsigned int 	wlan_fc_ds	;
-    bool 	wlan_fc_frag	;
-    bool 	wlan_fc_retry	;
-    bool 	wlan_fc_pwrmgt	;
-    bool 	wlan_fc_moredata	;
-    bool 	wlan_fc_protected	;
-    bool 	wlan_fc_order	;
-    unsigned int 	wlan_duration	;
+    int frame_interface_id;
+    char 	     frame_dlt[1];
+    char 	frame_offset_shift[1];
+    char 	frame_time_epoch[16];
+    char 	frame_time_delta[1];
+    char 	frame_time_delta_displayed[1];
+    char 	frame_time_relative[1];
+    char  	frame_len[1];
+    char  	frame_cap_len[1];
+    char 	frame_marked[1]	;
+    char 	frame_ignored[1]	;
+    char 	radiotap_version[1]	;
+    char 	radiotap_pad[1]	;
+    char 	radiotap_length[1]	;//parei
+    char 	radiotap_present_tsft[1]	;
+    char 	radiotap_present_flags[1]	;
+    char 	radiotap_present_rate[1]	;
+    char 	radiotap_present_channel[1]	;
+    char 	radiotap_present_fhss[1]	;
+    char 	radiotap_present_dbm_antsignal[1]	;
+    char 	radiotap_present_dbm_antnoise[1]	;
+    char 	radiotap_present_lock_quality[1]	;
+    char 	radiotap_present_tx_attenuation[1]	;
+    char 	radiotap_present_db_tx_attenuation[1]	;
+    char 	radiotap_present_dbm_tx_power[1]	;
+    char 	radiotap_present_antenna[1]	;
+    char 	radiotap_present_db_antsignal[1]	;
+    char 	radiotap_present_db_antnoise[1]	;
+    char 	radiotap_present_rxflags[1]	;
+    char 	radiotap_present_xchannel[1]	;
+    char 	radiotap_present_mcs[1]	;
+    char 	radiotap_present_ampdu[1]	;
+    char 	radiotap_present_vht[1]	;
+    char	radiotap_present_reserved[1]	;
+    char 	radiotap_present_rtap_ns[1]	;
+    char 	radiotap_present_vendor_ns[1]	;
+    char 	radiotap_present_ext[1]	;
+    char 	radiotap_mactime[1]	;
+    char 	radiotap_flags_cfp[1]	;
+    char 	radiotap_flags_preamble[1]	;
+    char 	radiotap_flags_wep[1]	;
+    char 	radiotap_flags_frag[1]	;
+    char 	radiotap_flags_fcs[1]	;
+    char 	radiotap_flags_datapad[1]	;
+    char 	radiotap_flags_badfcs[1]	;
+    char 	radiotap_flags_shortgi[1]	;
+    char 	radiotap_datarate[1]	;
+    char  	radiotap_channel_freq[1]	;
+    char 	radiotap_channel_type_turbo[1]	;
+    char 	radiotap_channel_type_cck[1]	;
+    char 	radiotap_channel_type_ofdm[1]	;
+    char 	radiotap_channel_type_2ghz[1]	;
+    char 	radiotap_channel_type_5ghz[1]	;
+    char 	radiotap_channel_type_passive[1]	;
+    char 	radiotap_channel_type_dynamic[1]	;
+    char 	radiotap_channel_type_gfsk[1]	;
+    char 	radiotap_channel_type_gsm[1]	;
+    char 	radiotap_channel_type_sturbo[1]	;
+    char 	radiotap_channel_type_half[1]	;
+    char 	radiotap_channel_type_quarter[1]	;
+    char 	radiotap_dbm_antsignal[1]	;
+    char 	radiotap_antenna[1]	;
+    char 	radiotap_rxflags_badplcp[1]	;
+    char 	wlan_fc_type_subtype[1]	;
+    char 	wlan_fc_version	[1];
+    char 	wlan_fc_type[1]	;
+    char 	wlan_fc_subtype[1]	;
+    char 	wlan_fc_ds[1]	;
+    char 	wlan_fc_frag[1]	;
+    char 	wlan_fc_retry[1]	;
+    char 	wlan_fc_pwrmgt[1]	;
+    char 	wlan_fc_moredata[1]	;
+    char 	wlan_fc_protected[1]	;
+    char 	wlan_fc_order[1]	;
+    char 	wlan_duration[1]	;
     char 	wlan_ra[18]	;//Receiver address	(Ethernet or other MAC address)
     char	wlan_da[18] 	; //Destination address (Ethernet or other MAC address)
     char 	wlan_ta[18]	; // Transmitter address (Ethernet or other MAC address)
     char 	wlan_sa[18]	;// Source address ((Ethernet or other MAC address))
     char 	wlan_bssid[18]	; //	BSS Id
-    unsigned int 	wlan_frag	;
-    unsigned int 	wlan_seq	;
+    char 	wlan_frag[1]	;
+    char 	wlan_seq[1]	;
     char 	wlan_bar_type[1]	;
     char 	wlan_ba_control_ackpolicy[1]	;
     char 	wlan_ba_control_multitid[1]	;
     char 	wlan_ba_control_cbitmap[1]	;
     char  	wlan_bar_compressed_tidinfo[1]	;
     char  	wlan_ba_bm[1]	;
-    bool 	wlan_fcs_good	;
+    char 	wlan_fcs_good[1]	;
     char 	wlan_mgt_fixed_capabilities_ess[1]	;
     char 	wlan_mgt_fixed_capabilities_ibss[1]	;
     char wlan_mgt_fixed_capabilities_cfpoll_ap[1]	;
@@ -160,88 +160,92 @@ int main(void)
     char 	a[1]	;
     char 	wlan_qos_txop_dur_req[1]	;
     char 	wlan_qos_buf_state_indicated1[1]	;
-    int 	data_len	;
+    char 	data_len[1]	;
     char 	classification[6]	;
     }Awid;
-
-    Awid dataset;
-    char url[]="teste.txt",nome[20], linha[700];
+    int i;
+    Awid dataset[150];
+    char url[]="1",nome[20], linha[700];
 	FILE *arq;
 
 	arq = fopen(url, "rb");
 	if(arq == NULL)
 			printf("Erro, nao foi possivel abrir o arquivo\n");
 	else{
-//		while( (fscanf(arq,"%i,%i,%f,%f,%f\n", &testando.a, &testando.b,&testando.c, &testando.d,&testando.eP))!=EOF )
-//			printf("%i teve media %.2f\n", testando.a, testando.d);
+//		while( (fscanf(arq,"%[^,],%[^,],%[^,],%[^,],%[^,]\n", &testando.a, &testando.b,&testando.c, &testando.d,&testando.eP))!=EOF )
+//			prcharf("%[^,] teve media %.2f\n", testando.a, testando.d);
             fseek(arq,0,SEEK_SET);
-            fgets(linha,1000,arq);
-            // 1 - 31
-            //32 - 67
-            //68 - 103
-            //104 - 139
-            //140 -  155
-            sscanf(linha,"%u,%i,%f,%f,%f,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,\
-            %d,%d,%x,%d,%d,%d,%u,%d,%d,%d,%d,%d,%d,%d,%i,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%i,%i,%i,%i,%i,%d\
-            ,%x,%d,%d,%d,%d,%d,%d,%u,%[^,],%[^,],%[^,],%[^,],%[^,],%d,%i,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%d,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
-            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
-            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%i,%[^,]\n",&dataset.frame_interface_id,&dataset.frame_dlt,&dataset.frame_offset_shift,\
-             &dataset.frame_time_epoch,&dataset.frame_time_delta,&dataset.frame_time_delta_displayed,&dataset.frame_time_relative,\
-             &dataset.frame_len, &dataset.frame_cap_len,&dataset.frame_marked,&dataset.frame_ignored,&dataset.radiotap_version,\
-            &dataset.radiotap_pad,&dataset.radiotap_length,&dataset.radiotap_present_tsft,&dataset.radiotap_present_flags,\
-            &dataset.radiotap_present_rate,&dataset.radiotap_present_channel,&dataset.radiotap_present_fhss,\
-            &dataset.radiotap_present_dbm_antsignal,&dataset.radiotap_present_dbm_antnoise,&dataset.radiotap_present_lock_quality,\
-            &dataset.radiotap_present_tx_attenuation, &dataset.radiotap_present_db_tx_attenuation,\
-            &dataset.radiotap_present_dbm_tx_power,&dataset.radiotap_present_antenna,&dataset.radiotap_present_db_antsignal,\
-            &dataset.radiotap_present_db_antnoise,&dataset.radiotap_present_rxflags,&dataset.radiotap_present_xchannel,\
-            &dataset.radiotap_present_mcs,&dataset.radiotap_present_ampdu, &dataset.radiotap_present_vht,\
-            &dataset.radiotap_present_reserved,&dataset.radiotap_present_rtap_ns,&dataset.radiotap_present_vendor_ns,\
-            &dataset.radiotap_present_ext,&dataset.radiotap_mactime,&dataset.radiotap_flags_cfp,\
-            &dataset.radiotap_flags_preamble,&dataset.radiotap_flags_wep,&dataset.radiotap_flags_frag,\
-            &dataset.radiotap_flags_fcs,&dataset.radiotap_flags_datapad,&dataset.radiotap_flags_badfcs,\
-            &dataset.radiotap_flags_shortgi,&dataset.radiotap_datarate,&dataset.radiotap_channel_freq,\
-            &dataset.radiotap_channel_type_turbo,&dataset.radiotap_channel_type_cck,&dataset.radiotap_channel_type_ofdm,\
-            &dataset.radiotap_channel_type_2ghz,&dataset.radiotap_channel_type_5ghz,&dataset.radiotap_channel_type_passive,\
-            &dataset.radiotap_channel_type_dynamic,&dataset.radiotap_channel_type_gfsk,\
-            &dataset.radiotap_channel_type_gsm,&dataset.radiotap_channel_type_sturbo,&dataset.radiotap_channel_type_half,\
-            &dataset.radiotap_channel_type_quarter,&dataset.radiotap_dbm_antsignal,&dataset.radiotap_antenna,\
-            &dataset.radiotap_rxflags_badplcp,&dataset.wlan_fc_type_subtype,&dataset.wlan_fc_version,\
-            &dataset.wlan_fc_type,&dataset.wlan_fc_subtype,&dataset.wlan_fc_ds,\
-            &dataset.wlan_fc_frag,&dataset.wlan_fc_retry,&dataset.wlan_fc_pwrmgt,&dataset.wlan_fc_moredata,\
-            &dataset.wlan_fc_protected,&dataset.wlan_fc_order,&dataset.wlan_duration,dataset.wlan_ra,\
-            dataset.wlan_da,dataset.wlan_ta,dataset.wlan_sa,dataset.wlan_bssid,\
-            &dataset.wlan_frag,&dataset.wlan_seq,&dataset.wlan_bar_type,&dataset.wlan_ba_control_ackpolicy,\
-            &dataset.wlan_ba_control_multitid,&dataset.wlan_ba_control_cbitmap,&dataset.wlan_bar_compressed_tidinfo,\
-            &dataset.wlan_ba_bm, &dataset.wlan_fcs_good,&dataset.wlan_mgt_fixed_capabilities_ess,\
-            &dataset.wlan_mgt_fixed_capabilities_ibss,&dataset.wlan_mgt_fixed_capabilities_cfpoll_ap,\
-            &dataset.wlan_mgt_fixed_capabilities_privacy,&dataset.wlan_mgt_fixed_capabilities_preamble,\
-            &dataset.wlan_mgt_fixed_capabilities_pbcc,&dataset.wlan_mgt_fixed_capabilities_agility,\
-            &dataset.wlan_mgt_fixed_capabilities_spec_man,&dataset.wlan_mgt_fixed_capabilities_short_slot_time,\
-            &dataset.wlan_mgt_fixed_capabilities_apsd,&dataset.wlan_mgt_fixed_capabilities_radio_measurement,\
-            &dataset.wlan_mgt_fixed_capabilities_dsss_ofdm,&dataset.wlan_mgt_fixed_capabilities_del_blk_ack,\
-            &dataset.wlan_mgt_fixed_capabilities_imm_blk_ack,&dataset.wlan_mgt_fixed_listen_ival,\
-            &dataset.wlan_mgt_fixed_current_ap,&dataset.wlan_mgt_fixed_status_code,&dataset.wlan_mgt_fixed_timestamp,\
-            &dataset.wlan_mgt_fixed_beacon,&dataset.wlan_mgt_fixed_aid,&dataset.wlan_mgt_fixed_reason_code,\
-            &dataset.wlan_mgt_fixed_auth_alg,&dataset.wlan_mgt_fixed_auth_seq,&dataset.wlan_mgt_fixed_category_code,\
-            &dataset.wlan_mgt_fixed_htact,&dataset.wlan_mgt_fixed_chanwidth,&dataset.wlan_mgt_fixed_fragment,\
-            &dataset.wlan_mgt_fixed_sequence,&dataset.wlan_mgt_tagged_all,&dataset.wlan_mgt_ssid,\
-            &dataset.wlan_mgt_ds_current_channel,&dataset.wlan_mgt_tim_dtim_count,&dataset.wlan_mgt_tim_dtim_period,\
-            &dataset.wlan_mgt_tim_bmapctl_multicast,&dataset.wlan_mgt_tim_bmapctl_offset,\
-            &dataset.wlan_mgt_country_info_environment,&dataset.wlan_mgt_rsn_version,&dataset.wlan_mgt_rsn_gcs_type,\
-            &dataset.wlan_mgt_rsn_pcs_count,&dataset.wlan_mgt_rsn_akms_count,&dataset.wlan_mgt_rsn_akms_type,\
-            &dataset.wlan_mgt_rsn_capabilities_preauth,&dataset.wlan_mgt_rsn_capabilities_no_pairwise,\
-            &dataset.wlan_mgt_rsn_capabilities_ptksa_replay_counter,&dataset.wlan_mgt_rsn_capabilities_gtksa_replay_counter,\
-            dataset.wlan_mgt_rsn_capabilities_mfpr,&dataset.wlan_mgt_rsn_capabilities_mfpc,\
-            &dataset.wlan_mgt_rsn_capabilities_peerkey,&dataset.wlan_mgt_tcprep_trsmt_pow,&dataset.wlan_mgt_tcprep_link_mrg,\
-            &dataset.wlan_wep_iv,&dataset.wlan_wep_key,&dataset.wlan_wep_icv,&dataset.wlan_tkip_extiv,&dataset.wlan_ccmp_extiv,\
-            &dataset.wlan_qos_tid,&dataset.wlan_qos_priority,&dataset.wlan_qos_eosp,&dataset.wlan_qos_ack,\
-            &dataset.wlan_qos_amsdupresent,&dataset.wlan_qos_buf_state_indicated0,&dataset.a,\
-            &dataset.wlan_qos_txop_dur_req,&dataset.wlan_qos_buf_state_indicated1,\
-            &dataset.data_len,&dataset.classification);
-//			printf("%i teve media %.2f\n", testando.a, testando.d);
+            for(i = 0;i<150;i++){
+            fgets(linha,2000,arq);
+            sscanf(linha,"%u,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
+            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%x,%[^,],%[^,],%[^,],%[^,],\
+            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
+            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
+            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
+            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
+            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
+            %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]\n",\
+            &dataset[i].frame_interface_id,&dataset[i].frame_dlt,&dataset[i].frame_offset_shift,\
+             &dataset[i].frame_time_epoch,&dataset[i].frame_time_delta,&dataset[i].frame_time_delta_displayed,&dataset[i].frame_time_relative,\
+             &dataset[i].frame_len, &dataset[i].frame_cap_len,&dataset[i].frame_marked,&dataset[i].frame_ignored,&dataset[i].radiotap_version,\
+            &dataset[i].radiotap_pad,&dataset[i].radiotap_length,&dataset[i].radiotap_present_tsft,&dataset[i].radiotap_present_flags,\
+            &dataset[i].radiotap_present_rate,&dataset[i].radiotap_present_channel,&dataset[i].radiotap_present_fhss,\
+            &dataset[i].radiotap_present_dbm_antsignal,&dataset[i].radiotap_present_dbm_antnoise,&dataset[i].radiotap_present_lock_quality,\
+            &dataset[i].radiotap_present_tx_attenuation, &dataset[i].radiotap_present_db_tx_attenuation,\
+            &dataset[i].radiotap_present_dbm_tx_power,&dataset[i].radiotap_present_antenna,&dataset[i].radiotap_present_db_antsignal,\
+            &dataset[i].radiotap_present_db_antnoise,&dataset[i].radiotap_present_rxflags,&dataset[i].radiotap_present_xchannel,\
+            &dataset[i].radiotap_present_mcs,&dataset[i].radiotap_present_ampdu, &dataset[i].radiotap_present_vht,\
+            &dataset[i].radiotap_present_reserved,&dataset[i].radiotap_present_rtap_ns,&dataset[i].radiotap_present_vendor_ns,\
+            &dataset[i].radiotap_present_ext,&dataset[i].radiotap_mactime,&dataset[i].radiotap_flags_cfp,\
+            &dataset[i].radiotap_flags_preamble,&dataset[i].radiotap_flags_wep,&dataset[i].radiotap_flags_frag,\
+            &dataset[i].radiotap_flags_fcs,&dataset[i].radiotap_flags_datapad,&dataset[i].radiotap_flags_badfcs,\
+            &dataset[i].radiotap_flags_shortgi,&dataset[i].radiotap_datarate,&dataset[i].radiotap_channel_freq,\
+            &dataset[i].radiotap_channel_type_turbo,&dataset[i].radiotap_channel_type_cck,&dataset[i].radiotap_channel_type_ofdm,\
+            &dataset[i].radiotap_channel_type_2ghz,&dataset[i].radiotap_channel_type_5ghz,&dataset[i].radiotap_channel_type_passive,\
+            &dataset[i].radiotap_channel_type_dynamic,&dataset[i].radiotap_channel_type_gfsk,\
+            &dataset[i].radiotap_channel_type_gsm,&dataset[i].radiotap_channel_type_sturbo,&dataset[i].radiotap_channel_type_half,\
+            &dataset[i].radiotap_channel_type_quarter,&dataset[i].radiotap_dbm_antsignal,&dataset[i].radiotap_antenna,\
+            &dataset[i].radiotap_rxflags_badplcp,&dataset[i].wlan_fc_type_subtype,&dataset[i].wlan_fc_version,\
+            &dataset[i].wlan_fc_type,&dataset[i].wlan_fc_subtype,&dataset[i].wlan_fc_ds,\
+            &dataset[i].wlan_fc_frag,&dataset[i].wlan_fc_retry,&dataset[i].wlan_fc_pwrmgt,&dataset[i].wlan_fc_moredata,\
+            &dataset[i].wlan_fc_protected,&dataset[i].wlan_fc_order,&dataset[i].wlan_duration,dataset[i].wlan_ra,\
+            dataset[i].wlan_da,dataset[i].wlan_ta,dataset[i].wlan_sa,dataset[i].wlan_bssid,\
+            &dataset[i].wlan_frag,&dataset[i].wlan_seq,&dataset[i].wlan_bar_type,&dataset[i].wlan_ba_control_ackpolicy,\
+            &dataset[i].wlan_ba_control_multitid,&dataset[i].wlan_ba_control_cbitmap,&dataset[i].wlan_bar_compressed_tidinfo,\
+            &dataset[i].wlan_ba_bm, &dataset[i].wlan_fcs_good,&dataset[i].wlan_mgt_fixed_capabilities_ess,\
+            &dataset[i].wlan_mgt_fixed_capabilities_ibss,&dataset[i].wlan_mgt_fixed_capabilities_cfpoll_ap,\
+            &dataset[i].wlan_mgt_fixed_capabilities_privacy,&dataset[i].wlan_mgt_fixed_capabilities_preamble,\
+            &dataset[i].wlan_mgt_fixed_capabilities_pbcc,&dataset[i].wlan_mgt_fixed_capabilities_agility,\
+            &dataset[i].wlan_mgt_fixed_capabilities_spec_man,&dataset[i].wlan_mgt_fixed_capabilities_short_slot_time,\
+            &dataset[i].wlan_mgt_fixed_capabilities_apsd,&dataset[i].wlan_mgt_fixed_capabilities_radio_measurement,\
+            &dataset[i].wlan_mgt_fixed_capabilities_dsss_ofdm,&dataset[i].wlan_mgt_fixed_capabilities_del_blk_ack,\
+            &dataset[i].wlan_mgt_fixed_capabilities_imm_blk_ack,&dataset[i].wlan_mgt_fixed_listen_ival,\
+            &dataset[i].wlan_mgt_fixed_current_ap,&dataset[i].wlan_mgt_fixed_status_code,&dataset[i].wlan_mgt_fixed_timestamp,\
+            &dataset[i].wlan_mgt_fixed_beacon,&dataset[i].wlan_mgt_fixed_aid,&dataset[i].wlan_mgt_fixed_reason_code,\
+            &dataset[i].wlan_mgt_fixed_auth_alg,&dataset[i].wlan_mgt_fixed_auth_seq,&dataset[i].wlan_mgt_fixed_category_code,\
+            &dataset[i].wlan_mgt_fixed_htact,&dataset[i].wlan_mgt_fixed_chanwidth,&dataset[i].wlan_mgt_fixed_fragment,\
+            &dataset[i].wlan_mgt_fixed_sequence,&dataset[i].wlan_mgt_tagged_all,&dataset[i].wlan_mgt_ssid,\
+            &dataset[i].wlan_mgt_ds_current_channel,&dataset[i].wlan_mgt_tim_dtim_count,&dataset[i].wlan_mgt_tim_dtim_period,\
+            &dataset[i].wlan_mgt_tim_bmapctl_multicast,&dataset[i].wlan_mgt_tim_bmapctl_offset,\
+            &dataset[i].wlan_mgt_country_info_environment,&dataset[i].wlan_mgt_rsn_version,&dataset[i].wlan_mgt_rsn_gcs_type,\
+            &dataset[i].wlan_mgt_rsn_pcs_count,&dataset[i].wlan_mgt_rsn_akms_count,&dataset[i].wlan_mgt_rsn_akms_type,\
+            &dataset[i].wlan_mgt_rsn_capabilities_preauth,&dataset[i].wlan_mgt_rsn_capabilities_no_pairwise,\
+            &dataset[i].wlan_mgt_rsn_capabilities_ptksa_replay_counter,&dataset[i].wlan_mgt_rsn_capabilities_gtksa_replay_counter,\
+            dataset[i].wlan_mgt_rsn_capabilities_mfpr,&dataset[i].wlan_mgt_rsn_capabilities_mfpc,\
+            &dataset[i].wlan_mgt_rsn_capabilities_peerkey,&dataset[i].wlan_mgt_tcprep_trsmt_pow,&dataset[i].wlan_mgt_tcprep_link_mrg,\
+            &dataset[i].wlan_wep_iv,&dataset[i].wlan_wep_key,&dataset[i].wlan_wep_icv,&dataset[i].wlan_tkip_extiv,&dataset[i].wlan_ccmp_extiv,\
+            &dataset[i].wlan_qos_tid,&dataset[i].wlan_qos_priority,&dataset[i].wlan_qos_eosp,&dataset[i].wlan_qos_ack,\
+            &dataset[i].wlan_qos_amsdupresent,&dataset[i].wlan_qos_buf_state_indicated0,&dataset[i].a,\
+            &dataset[i].wlan_qos_txop_dur_req,&dataset[i].wlan_qos_buf_state_indicated1,\
+            &dataset[i].data_len,&dataset[i].classification);
+//			prcharf("%[^,] teve media %.2f\n", testando.a, testando.d);
 
 }
 	fclose(arq);
-	printf("a coiisa eh: %c",dataset.classification);
+	//printf("a coiisa eh: %c",dataset[i].classification);
+	}
+	float teste;
+	teste = strtof(dataset[1].frame_time_epoch,NULL);
+	printf("%f",teste);
     return 0;
 }
