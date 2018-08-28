@@ -4,6 +4,34 @@
 #include<stdint.h>
 #include<stdint.h>
 #include <inttypes.h>
+#include <math.h>
+
+float sourceIPsEntropy (char *sourceIPs){
+    size_t len = strlen(sourceIPs);
+    int i;
+    float result = 0.0;
+    for (i=0;i<len;i++){
+        result = result + prob(sourceIPs, *(sourceIPs + i)) + log2(prob(sourceIPs,*(sourceIPs + i)));
+    }
+
+    return result;
+
+
+}
+
+float prob(char * sourceIPs, char sourceIP[18]){
+    size_t len = strlen(sourceIPs);
+
+
+}
+
+float sourceIPsVariation(char *sourceIPs){
+
+
+}
+
+
+
 int main(void)
 {
     typedef struct {
