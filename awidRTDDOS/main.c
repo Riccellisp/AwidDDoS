@@ -6,24 +6,30 @@
 #include <inttypes.h>
 #include <math.h>
 
-float sourceIPsEntropy (char *sourceIPs){
+//float sourceIPsEntropy (char *sourceIPs){
+//    size_t len = strlen(sourceIPs);
+//    int i;
+//    float result = 0.0;
+//    for (i=0;i<len;i++){
+//        result = result + prob(sourceIPs, *(sourceIPs + i)) + log2(prob(sourceIPs,*(sourceIPs + i)));
+//    }
+//
+//    return result;
+//
+//
+//}
+
+/*
+float prob(char * sourceIPs, char sourceIP[18]){
     size_t len = strlen(sourceIPs);
     int i;
     float result = 0.0;
     for (i=0;i<len;i++){
-        result = result + prob(sourceIPs, *(sourceIPs + i)) + log2(prob(sourceIPs,*(sourceIPs + i)));
+
+
     }
 
-    return result;
-
-
-}
-
-float prob(char * sourceIPs, char sourceIP[18]){
-    size_t len = strlen(sourceIPs);
-
-
-}
+}*/
 
 float sourceIPsVariation(char *sourceIPs){
 
@@ -126,7 +132,7 @@ int main(void)
     char 	wlan_fcs_good[1]	;
     char 	wlan_mgt_fixed_capabilities_ess[1]	;
     char 	wlan_mgt_fixed_capabilities_ibss[1]	;
-    char wlan_mgt_fixed_capabilities_cfpoll_ap[1]	;
+    char    wlan_mgt_fixed_capabilities_cfpoll_ap[1]	;
     char 	wlan_mgt_fixed_capabilities_privacy[1]	;
     char 	wlan_mgt_fixed_capabilities_preamble[1]	;
     char 	wlan_mgt_fixed_capabilities_pbcc[1]	;
@@ -195,6 +201,10 @@ int main(void)
     Awid dataset[150];
     char url[]="1",nome[20], linha[700];
 	FILE *arq;
+
+	double frame_time_epoch[150];
+    char sourceIPs[150][18];
+    char destinationIPs[18][150];
 
 	arq = fopen(url, "rb");
 	if(arq == NULL)
@@ -268,12 +278,17 @@ int main(void)
             &dataset[i].data_len,&dataset[i].classification);
 //			prcharf("%[^,] teve media %.2f\n", testando.a, testando.d);
 
+            frame_time_epoch[i] = atof(dataset[1].frame_time_epoch);
+            strcpy(sourceIPs[i],dataset[i].wlan_sa);
+            strcpy(destinationIPs[i],dataset[i].wlan_da);
+            printf("%s\n", sourceIPs[i]);
+            printf("%s\n", destinationIPs[i]);
+            printf("%lf\n", frame_time_epoch[i]);
 }
 	fclose(arq);
 	//printf("a coiisa eh: %c",dataset[i].classification);
 	}
-	float teste;
-	teste = strtof(dataset[1].frame_time_epoch,NULL);
-	printf("%f",teste);
+
+
     return 0;
 }
