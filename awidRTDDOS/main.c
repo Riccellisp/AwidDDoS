@@ -31,6 +31,15 @@ float prob(char * sourceIPs, char sourceIP[18]){
 
 }*/
 
+int isWindow (double t0, double t1, int windowLength){
+    double tFinal;
+    tFinal = t0 + 1;
+    if (t1 <= tFinal)
+        return 1;
+        else
+        return 0;
+}
+
 float sourceIPsVariation(char *sourceIPs){
 
 
@@ -203,6 +212,7 @@ int main(void)
 	FILE *arq;
 
 	double frame_time_epoch[150];
+	double first_packet_window;
     char sourceIPs[150][18];
     char destinationIPs[18][150];
 
@@ -277,10 +287,11 @@ int main(void)
             &dataset[i].wlan_qos_txop_dur_req,&dataset[i].wlan_qos_buf_state_indicated1,\
             &dataset[i].data_len,&dataset[i].classification);
 //			prcharf("%[^,] teve media %.2f\n", testando.a, testando.d);
-
-            frame_time_epoch[i] = atof(dataset[1].frame_time_epoch);
+            first_packet_window = frame_time_epoch[1];
+            frame_time_epoch[i] = atof(dataset[i].frame_time_epoch);
             strcpy(sourceIPs[i],dataset[i].wlan_sa);
             strcpy(destinationIPs[i],dataset[i].wlan_da);
+
             printf("%s\n", sourceIPs[i]);
             printf("%s\n", destinationIPs[i]);
             printf("%lf\n", frame_time_epoch[i]);
