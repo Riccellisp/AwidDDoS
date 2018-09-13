@@ -6,21 +6,21 @@
 #include <inttypes.h>
 #include <math.h>
 
-//float sourceIPsEntropy (char *sourceIPs){
-//    size_t len = strlen(sourceIPs);
-//    int i;
-//    float result = 0.0;
-//    for (i=0;i<len;i++){
-//        result = result + prob(sourceIPs, *(sourceIPs + i)) + log2(prob(sourceIPs,*(sourceIPs + i)));
-//    }
-//
-//    return result;
-//
-//
-//}
+float sourceIPsEntropy (char *sourceIPs){
+    size_t len = strlen(sourceIPs);
+    int i;
+    float result = 0.0;
+    for (i=0;i<len;i++){
+        result = result + prob1(sourceIPs, *(sourceIPs + i)) + log2(prob1(sourceIPs,*(sourceIPs + i)));
+    }
 
-/*
-float prob(char * sourceIPs, char sourceIP[18]){
+    return result;
+
+
+}
+
+
+float prob1(char * sourceIPs, char sourceIP[18]){
     size_t len = strlen(sourceIPs);
     int i;
     float result = 0.0;
@@ -29,7 +29,7 @@ float prob(char * sourceIPs, char sourceIP[18]){
 
     }
 
-}*/
+}
 
 int isWindow (double t0, double t1, int windowLength){
     double tFinal;
@@ -296,7 +296,7 @@ int main(void)
             strcpy(sourceIPs[i],dataset[i].wlan_sa);
             strcpy(destinationIPs[i],dataset[i].wlan_da);
             int j;
-            for(j=i+1;j<150<j++){
+            for(j=i+1;j<150;j++){
                 if(isWindow(first_packet_window,frame_time_epoch[j],windowLength)){
                     frame_time_epoch[j] = atof(dataset[j].frame_time_epoch);
                     strcpy(sourceIPs[j],dataset[j].wlan_sa);
@@ -304,13 +304,14 @@ int main(void)
 //                    printf("%s\n", sourceIPs[i]);
 //                    printf("%s\n", destinationIPs[i]);
 //                    printf("%lf\n", frame_time_epoch[i]);
+                }
                     else{
-
-
+                        int k;
+// CHAMAR FUNÇÃO QUE CALCULA A ENTROPIA,VARIAÇAO E TAL
                             break;
 
                     }
-                }
+
             }
 }
 	fclose(arq);
