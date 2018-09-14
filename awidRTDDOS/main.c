@@ -6,12 +6,12 @@
 #include <inttypes.h>
 #include <math.h>
 
-float sourceIPsEntropy (char *sourceIPs){
+float sourceIPsEntropy (char *sourceIPs[18]){
     size_t len = strlen(sourceIPs);
     int i;
     float result = 0.0;
     for (i=0;i<len;i++){
-        result = result + prob1(sourceIPs, *(sourceIPs + i)) + log2(prob1(sourceIPs,*(sourceIPs + i)));
+        result = result + prob1(sourceIPs, *(sourceIPs[18] + i)) + log2(prob1(*(sourceIPs[18]),*(sourceIPs[18] + i)));
     }
 
     return result;
@@ -20,7 +20,7 @@ float sourceIPsEntropy (char *sourceIPs){
 }
 
 
-float prob1(char * sourceIPs, char sourceIP[18]){
+float prob1(char * sourceIPs[18], char sourceIP[18]){
     size_t len = strlen(sourceIPs);
     int i;
     float result = 0.0;
@@ -49,7 +49,7 @@ float sourceIPsVariation(char *sourceIPs){
 
 int main(void)
 {
-    // Script features
+    // Script parameters
     int windowLength = 1;
     //
 
