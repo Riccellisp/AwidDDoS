@@ -6,12 +6,28 @@
 #include <inttypes.h>
 #include <math.h>
 
-float sourceIPsEntropy (char *sourceIPs[18]){
-    size_t len = strlen(sourceIPs);
-    int i;
+float prob1(char * sourceIPs, char *sourceIP,int len){
+    int i,j;
     float result = 0.0;
     for (i=0;i<len;i++){
-        result = result + prob1(sourceIPs, *(sourceIPs[18] + i)) + log2(prob1(*(sourceIPs[18]),*(sourceIPs[18] + i)));
+       if (strcmp(*(sourceIPs + 18*i),sourceIP){
+    // conta
+
+       }
+
+    }
+    return result;
+
+}
+
+float sourceIPsEntropy (char *sourceIPs,int len){
+//    size_t len = strlen(sourceIPs);
+    int i,j;
+    float result = 0.0;
+    for (i=0;i<len;i++){
+        for (j=0;j<18;j++){
+        result = result + prob1(sourceIPs, *(sourceIPs + 18*i + j),&len) + log2(prob1(sourceIPs, *(sourceIPs + 18*i + j),&len));
+        }
     }
 
     return result;
@@ -20,16 +36,7 @@ float sourceIPsEntropy (char *sourceIPs[18]){
 }
 
 
-float prob1(char * sourceIPs[18], char sourceIP[18]){
-    size_t len = strlen(sourceIPs);
-    int i;
-    float result = 0.0;
-    for (i=0;i<len;i++){
 
-
-    }
-
-}
 
 int isWindow (double t0, double t1, int windowLength){
     double tFinal;
@@ -306,8 +313,10 @@ int main(void)
 //                    printf("%lf\n", frame_time_epoch[i]);
                 }
                     else{
-                        int k;
+                        int k,len;
+                        len = sizeof(sourceIPs)/18;
 // CHAMAR FUNÇÃO QUE CALCULA A ENTROPIA,VARIAÇAO E TAL
+                        sourceIPsEntropy(&sourceIPs,len);
                             break;
 
                     }
