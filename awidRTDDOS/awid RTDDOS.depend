@@ -7,7 +7,7 @@
 	<stdint.h>
 	<inttypes.h>
 
-1537206654 source:/home/riccelli/AwidDDoS/awidRTDDOS/main.c
+1537217227 source:/home/riccelli/AwidDDoS/awidRTDDOS/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -15,4 +15,21 @@
 	<stdint.h>
 	<inttypes.h>
 	<math.h>
+	"defs.h"
+
+1537215428 source:/home/riccelli/AwidDDoS/awidRTDDOS/isWindow.c
+	"defs.h"
+
+1537217117 /home/riccelli/AwidDDoS/awidRTDDOS/defs.h
+
+1537215309 source:/home/riccelli/AwidDDoS/awidRTDDOS/prob1.c
+	"defs.h"
+
+1537215596 source:/home/riccelli/AwidDDoS/awidRTDDOS/sourceIPsVariation.c
+	"defs.h"
+
+1537218458 source:/home/riccelli/AwidDDoS/awidRTDDOS/preProcessing.c
+	"defs.h"
+	<stdio.h>
+	<stdlib.h>
 
