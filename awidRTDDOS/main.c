@@ -6,17 +6,17 @@
 #include <inttypes.h>
 #include <math.h>
 
-float prob1(char * sourceIPs, char *sourceIP,int len){
-    int i,j;
-    float result = 0.0;
+float prob1(char * sourceIPs, char *sourceIP, int len){
+    int i,j,count;
+    count = 0;
     for (i=0;i<len;i++){
-       if (strcmp(*(sourceIPs + 18*i),sourceIP){
+       if (strcmp(*(sourceIPs + 18*i),sourceIP)){
     // conta
-
+        count = count + 1;
        }
 
     }
-    return result;
+    return count/len;
 
 }
 
@@ -218,14 +218,14 @@ int main(void)
     char 	classification[6]	;
     }Awid;
     int i;
-    Awid dataset[150];
+    Awid dataset[600];
     char url[]="1",nome[20], linha[700];
 	FILE *arq;
 
-	double frame_time_epoch[150];
+	double frame_time_epoch[600];
 	double first_packet_window;
-    char sourceIPs[150][18];
-    char destinationIPs[18][150];
+    char sourceIPs[600][18];
+    char destinationIPs[600][18];
 
 	arq = fopen(url, "rb");
 	if(arq == NULL)
@@ -234,7 +234,7 @@ int main(void)
 //		while( (fscanf(arq,"%[^,],%[^,],%[^,],%[^,],%[^,]\n", &testando.a, &testando.b,&testando.c, &testando.d,&testando.eP))!=EOF )
 //			prcharf("%[^,] teve media %.2f\n", testando.a, testando.d);
             fseek(arq,0,SEEK_SET);
-            for(i = 0;i<150;i++){
+            for(i = 0;i<600;i++){
             fgets(linha,2000,arq);
             sscanf(linha,"%u,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
             %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%x,%[^,],%[^,],%[^,],%[^,],\
@@ -298,27 +298,35 @@ int main(void)
             &dataset[i].wlan_qos_txop_dur_req,&dataset[i].wlan_qos_buf_state_indicated1,\
             &dataset[i].data_len,&dataset[i].classification);
 //			prcharf("%[^,] teve media %.2f\n", testando.a, testando.d);
-            first_packet_window = frame_time_epoch[i];
             frame_time_epoch[i] = atof(dataset[i].frame_time_epoch);
+            first_packet_window = atof(dataset[0].frame_time_epoch);
             strcpy(sourceIPs[i],dataset[i].wlan_sa);
             strcpy(destinationIPs[i],dataset[i].wlan_da);
-            int j;
-            for(j=i+1;j<150;j++){
-                if(isWindow(first_packet_window,frame_time_epoch[j],windowLength)){
+            int j,coi;
+            for(j=i+1;j<600;j++){
+
+                printf("%lf -  %lf  = %lf\n",atof(dataset[i].frame_time_epoch), first_packet_window, (atof(dataset[i].frame_time_epoch) - first_packet_window));
+                coi = isWindow(first_packet_window,(atof(dataset[i].frame_time_epoch)),windowLength);
+                if (coi != 0){
+                    printf("COISOU");
+
+                }
+                if(isWindow(first_packet_window,(atof(dataset[i].frame_time_epoch)),windowLength)){
                     frame_time_epoch[j] = atof(dataset[j].frame_time_epoch);
                     strcpy(sourceIPs[j],dataset[j].wlan_sa);
                     strcpy(destinationIPs[j],dataset[j].wlan_da);
-//                    printf("%s\n", sourceIPs[i]);
-//                    printf("%s\n", destinationIPs[i]);
-//                    printf("%lf\n", frame_time_epoch[i]);
+                    printf("%s\n", sourceIPs[i]);
+                    printf("%s\n", destinationIPs[i]);
+                    printf("%lf\n", frame_time_epoch[i]);
                 }
                     else{
-                        int k,len;
-                        len = sizeof(sourceIPs)/18;
+//                        int k,len;
+//                        len = sizeof(sourceIPs)/18;
 // CHAMAR FUNÇÃO QUE CALCULA A ENTROPIA,VARIAÇAO E TAL
-                        sourceIPsEntropy(&sourceIPs,len);
-                            break;
-
+                        //sourceIPsEntropy(&sourceIPs,len);
+//                            break;
+//add função que valida os campos do dataset
+// se houver ? vai para o prox
                     }
 
             }
