@@ -38,7 +38,7 @@ float sourceIPsEntropy (char *sourceIPs,int len){
 
 
 
-int isWindow (double t0, double t1, int windowLength){
+int isWindow (double t0, double t1, double windowLength){
     double tFinal;
     tFinal = t0 + windowLength;
     if (t1 <= tFinal)
@@ -57,7 +57,7 @@ float sourceIPsVariation(char *sourceIPs){
 int main(void)
 {
     // Script parameters
-    int windowLength = 1;
+    int windowLength = 1.0000;
     //
 
     typedef struct {
@@ -297,29 +297,45 @@ int main(void)
             &dataset[i].wlan_qos_amsdupresent,&dataset[i].wlan_qos_buf_state_indicated0,&dataset[i].a,\
             &dataset[i].wlan_qos_txop_dur_req,&dataset[i].wlan_qos_buf_state_indicated1,\
             &dataset[i].data_len,&dataset[i].classification);
+            printf("%s\n", dataset[i].frame_time_epoch);
+            printf("%s\n", dataset[i].wlan_da);
+            printf("%s\n", dataset[i].wlan_ra);
+            }
+            int jk;
+//            jk = strcmp(dataset[i].wlan_da,"?");
+            //printf("%d\n", strcmp(dataset[i].wlan_da,"?") != 0);
+            if(((strcmp(dataset[i].frame_time_epoch,"?") != 0)||(strcmp(dataset[i].wlan_da,"?")!= 0)||(strcmp(dataset[i].wlan_ra,"?")!= 0))){
+            printf("%d\n",i);
 //			prcharf("%[^,] teve media %.2f\n", testando.a, testando.d);
-            frame_time_epoch[i] = atof(dataset[i].frame_time_epoch);
-            first_packet_window = atof(dataset[0].frame_time_epoch);
+            frame_time_epoch[i] = atof(dataset[0].frame_time_epoch);
+            first_packet_window = atof(dataset[i].frame_time_epoch);
             strcpy(sourceIPs[i],dataset[i].wlan_sa);
             strcpy(destinationIPs[i],dataset[i].wlan_da);
-            int j,coi;
+
+            int j;
             for(j=i+1;j<600;j++){
 
-                printf("%lf -  %lf  = %lf\n",atof(dataset[i].frame_time_epoch), first_packet_window, (atof(dataset[i].frame_time_epoch) - first_packet_window));
-                coi = isWindow(first_packet_window,(atof(dataset[i].frame_time_epoch)),windowLength);
-                if (coi != 0){
-                    printf("COISOU");
+                //printf("%lf -  %lf  = %lf\n",atof(dataset[i].frame_time_epoch), first_packet_window, (atof(dataset[i].frame_time_epoch) - first_packet_window));
+//                coi = isWindow(first_packet_window,(atof(dataset[i].frame_time_epoch)),windowLength);
+//                if (coi != 0){
+//                    printf("COISOU");
+//
+//                }
+                frame_time_epoch[j] = atof(dataset[j].frame_time_epoch);
 
-                }
-                if(isWindow(first_packet_window,(atof(dataset[i].frame_time_epoch)),windowLength)){
+                if(!isWindow(first_packet_window,frame_time_epoch[j],windowLength)){
                     frame_time_epoch[j] = atof(dataset[j].frame_time_epoch);
                     strcpy(sourceIPs[j],dataset[j].wlan_sa);
                     strcpy(destinationIPs[j],dataset[j].wlan_da);
-                    printf("%s\n", sourceIPs[i]);
-                    printf("%s\n", destinationIPs[i]);
-                    printf("%lf\n", frame_time_epoch[i]);
+//                    printf("%s\n", sourceIPs[i]);
+//                    printf("%s\n", destinationIPs[i]);
+//                    printf("%lf\n", frame_time_epoch[i]);
+                    int len;
+                    len = sizeof(sourceIPs)/18;
+                    sourceIPsEntropy(&sourceIPs,len);
                 }
-                    else{
+
+                    //else{
 //                        int k,len;
 //                        len = sizeof(sourceIPs)/18;
 // CHAMAR FUNÇÃO QUE CALCULA A ENTROPIA,VARIAÇAO E TAL
@@ -327,10 +343,11 @@ int main(void)
 //                            break;
 //add função que valida os campos do dataset
 // se houver ? vai para o prox
-                    }
+                    //}
 
             }
-}
+                }
+
 	fclose(arq);
 	//printf("a coiisa eh: %c",dataset[i].classification);
 	}
