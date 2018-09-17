@@ -31,7 +31,24 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="defs.h" />
+		<Unit filename="isWindow.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="preProcessing.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="prob1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sourceIPsEntropy.c">
+			<Option compilerVar="CC" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="sourceIPsVariation.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
