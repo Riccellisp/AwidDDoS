@@ -3,10 +3,17 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/sysmacros.h>
+
+
 void preProcessing (){
 int i,aux;
 aux = 0;
-    Awid dataset[600];
+
+    //Awid dataset[600];
+    Awid *dataset;
     char url[]="1",nome[20], linha[700];
 	FILE *arq;
 
@@ -14,14 +21,49 @@ aux = 0;
 	double first_packet_window;
     char sourceIPs[600][18];
     char destinationIPs[600][18];
+
+
+
+ 
+
+char    *typeOfFile(mode_t);
+char    *permOfFile(mode_t);
+void     outputStatInfo(char *, struct stat *);
+
+    char *filename;
+    struct stat st;
+
+
+        if (lstat("1", &st) < 0) {
+            perror("1");
+            putchar('\n');
+            return 0;
+        }
+
+        printf("o tamanho do arquivo eh %d",st.st_size);
+
+
 	arq = fopen(url, "rb");
+
+ 	dataset=malloc(sizeof(Awid));
+
+        if(dataset==NULL) {
+      		printf("mao pode alocar\n");
+		return 0;
+	}
+        printf("%d",sizeof(Awid));
+        fflush(stdout);
+
 	if(arq == NULL)
 			printf("Erro, nao foi possivel abrir o arquivo\n");
 	else{
 //		while( (fscanf(arq,"%[^,],%[^,],%[^,],%[^,],%[^,]\n", &testando.a, &testando.b,&testando.c, &testando.d,&testando.eP))!=EOF )
 //			prcharf("%[^,] teve media %.2f\n", testando.a, testando.d);
+	    
             fseek(arq,0,SEEK_SET);
-            for(i = 0;i<600;i++){
+            //for(i = 0;i<600;i++){
+	    while(!feof(arq)) {
+	    dataset=realloc(dataset, (i+2)*sizeof(Awid));
             fgets(linha,2000,arq);
             sscanf(linha,"%u,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],\
             %[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%x,%[^,],%[^,],%[^,],%[^,],\
@@ -89,21 +131,24 @@ aux = 0;
 
 
                 if((strcmp(dataset[i].frame_time_epoch,"?") != 0) && (strcmp(dataset[i].wlan_da,"?")!= 0) && (strcmp(dataset[i].wlan_ra,"?")!= 0) ){
-                frame_time_epoch[aux] = atof(dataset[i].frame_time_epoch);
-                strcpy(sourceIPs[aux],dataset[i].wlan_sa);
-                strcpy(destinationIPs[aux],dataset[i].wlan_da);
-                aux++;
-                printf("%s\n", dataset[i].frame_time_epoch);
-                printf("%s\n", destinationIPs);
-                printf("%s\n", sourceIPs);
-            }
-            else{
-            //printf("pulei\n");
+                	frame_time_epoch[aux] = atof(dataset[i].frame_time_epoch);
+                	strcpy(sourceIPs[aux],dataset[i].wlan_sa);
+                	strcpy(destinationIPs[aux],dataset[i].wlan_da);
+                	aux++;
+                	printf("%f\n", atof(dataset[i].frame_time_epoch));
+                	printf("%s\n", destinationIPs);
+                	printf("%s\n", sourceIPs);
+            	}
+            	else{
+            	//printf("pulei\n");
                 continue;
 
-            }
+            	}
 
             }
+		float  entropy;
+		entropy = sourceIPsEntropy(sourceIPs,aux + 1);
+		printf("%f\n",entropy);
     fclose(arq);
 
     }
