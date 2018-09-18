@@ -1,8 +1,11 @@
 #include"defs.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 void preProcessing (){
 int i,aux;
+aux = 0;
     Awid dataset[600];
     char url[]="1",nome[20], linha[700];
 	FILE *arq;
@@ -82,16 +85,20 @@ int i,aux;
             &dataset[i].wlan_qos_txop_dur_req,&dataset[i].wlan_qos_buf_state_indicated1,\
             &dataset[i].data_len,&dataset[i].classification);
 
-            if(((strcmp(dataset[i].frame_time_epoch,"?") != 0)||(strcmp(dataset[i].wlan_da,"?")!= 0)||(strcmp(dataset[i].wlan_ra,"?")!= 0))){
+//            printf("%d,%d,%d\n",(strcmp(dataset[i].frame_time_epoch,"?") != 0),(strcmp(dataset[i].wlan_da,"?")!= 0),(strcmp(dataset[i].wlan_ra,"?")!= 0));
+
+
+                if((strcmp(dataset[i].frame_time_epoch,"?") != 0) && (strcmp(dataset[i].wlan_da,"?")!= 0) && (strcmp(dataset[i].wlan_ra,"?")!= 0) ){
                 frame_time_epoch[aux] = atof(dataset[i].frame_time_epoch);
                 strcpy(sourceIPs[aux],dataset[i].wlan_sa);
                 strcpy(destinationIPs[aux],dataset[i].wlan_da);
                 aux++;
-//                printf("%s\n", dataset[i].frame_time_epoch);
-//                printf("%s\n", dataset[i].wlan_da);
-//                printf("%s\n", dataset[i].wlan_ra);
+                printf("%s\n", dataset[i].frame_time_epoch);
+                printf("%s\n", destinationIPs);
+                printf("%s\n", sourceIPs);
             }
             else{
+            //printf("pulei\n");
                 continue;
 
             }
