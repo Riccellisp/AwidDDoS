@@ -31,9 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="defs.h">
-			<Option link="1" />
+		<Unit filename="Log2.c">
+			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="defs.h" />
 		<Unit filename="isWindow.c">
 			<Option compilerVar="CC" />
 		</Unit>
