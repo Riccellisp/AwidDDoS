@@ -5,7 +5,7 @@
 #include<stdint.h>
 #include <inttypes.h>
 #include <math.h>
-#include"defs.h"
+#include "defs.h"
 int main(void)
 {
     // Script parameters

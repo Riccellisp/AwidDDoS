@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/main.dir/main.c.o CMakeFiles/main.dir/preProcessing.c.o CMakeFiles/main.dir/sourceIPsEntropy.c.o CMakeFiles/main.dir/prob1.c.o CMakeFiles/main.dir/Log2.c.o  -o main -rdynamic 
