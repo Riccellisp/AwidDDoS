@@ -22,7 +22,7 @@ double first_packet_window;
 //char sourceIPs[600][18];
 char *sourceIPs;
 
-char * destinationIPs;
+char *destinationIPs;
 
 float  entropy,sourceIPsVar;
 int packetRate;
@@ -133,20 +133,23 @@ void     outputStatInfo(char *, struct stat *);
 
 //            printf("%d,%d,%d\n",(strcmp(dataset[i].frame_time_epoch,"?") != 0),(strcmp(dataset[i].wlan_da,"?")!= 0),(strcmp(dataset[i].wlan_ra,"?")!= 0));
                 sourceIPs = malloc(18*sizeof(char));
+                destinationIPs = malloc(18*sizeof(char));
+                destinationIPs = malloc(18*sizeof(char));
                 if((strcmp(dataset[i].frame_time_epoch,"?") != 0) && (strcmp(dataset[i].wlan_da,"?")!= 0) && (strcmp(dataset[i].wlan_ra,"?")!= 0) ){
                     frame_time_epoch=realloc(frame_time_epoch, (aux+1)*sizeof(double));
-                    sourceIPs= realloc(sourceIPs, sizeof(char*)*(aux + 1));
-                    sourceIPs[aux] = malloc(18 + 1);
-                    //destinationIPs=realloc(destinationIPs, (aux+18)*sizeof(char));
-                    printf("%d\n", sizeof(char));
+                    sourceIPs= realloc(sourceIPs, 18*(aux+1)*sizeof(char) + 18);
+                    destinationIPs= realloc(destinationIPs, 18*(aux+1)*sizeof(char) + 18);
+                    //printf("tamanho de %d\n", 18*(aux+1)*sizeof(char));
                 	frame_time_epoch[aux] = atof(dataset[i].frame_time_epoch);
-                	printf("%lf\n", frame_time_epoch[aux]);
+
+                	//printf("%lf\n", frame_time_epoch[aux]);
+
                 	//printf("%s\n", sourceIPs[1]);
                 	//printf("%s\n", dataset[i].wlan_sa);
-                	strcpy(sourceIPs[aux] ,dataset[i].wlan_sa);
+                	strcpy((sourceIPs+18*(aux+1)) ,dataset[i].wlan_sa);
 //                	strcpy(&a ,dataset[i].wlan_sa);
-                	//strcpy(destinationIPs + 18 * i,dataset[i].wlan_da);
-                	printf("%s\n",sourceIPs[aux]);
+                	strcpy((destinationIPs +18*(aux+1)),dataset[i].wlan_da);
+                	//printf("%s\n",sourceIPs + 18*(aux+1) );
                 	aux++;
 //                	printf("%lf\n", frame_time_epoch[aux]);
                 	//printf("%s\n", destinationIPs);
