@@ -1,7 +1,8 @@
-#include"defs.h"
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include"defs.h"
+
 
        static int
        cmpstringp(const void *p1, const void *p2)
@@ -27,7 +28,7 @@ float sourceIPsEntropy(char *sourceIPs,int len){
     // calcula a probabilidade do primeiro ip da lista ordenada
     result=prob1(sourceIPs, sourceIPs,len);
 
-    printf("prob de %s é %f\n",sourceIPs,result);
+    //printf("prob de %s é %f\n",sourceIPs,result);
     // acumula ...e no final o acumulado tem q dar 1
     total+=result;
 
@@ -38,7 +39,7 @@ float sourceIPsEntropy(char *sourceIPs,int len){
       if (strcmp(sourceIPs+18*(i-1),sourceIPs+18*i)) {
 		result=prob1(sourceIPs+18*i, sourceIPs+18*i,len);
 		total+=result*Log2(result);
-      		printf("prob de %s é %f\n",sourceIPs+18*i,result);
+      		//printf("prob de %s é %f\n",sourceIPs+18*i,result);
       }
 
     }

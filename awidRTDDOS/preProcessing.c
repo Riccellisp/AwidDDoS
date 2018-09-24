@@ -7,14 +7,76 @@
 #include <sys/stat.h>
 #include <sys/sysmacros.h>
 
+    static int
+       cmpstringp(const void *p1, const void *p2)
+       {
+           /* The actual arguments to this function are "pointers to
+              pointers to char", but strcmp(3) arguments are "pointers
+              to char", hence the following cast plus dereference */
+
+           return strcmp(* (char * const *) p1, * (char * const *) p2);
+       }
+
+
+float sourceIPsEntropy(char *sourceIPs,int len){
+//    size_t len = strlen(sourceIPs);
+    int i,j;
+    float result = 0.0;
+
+    float total=0.0;
+
+    // ordena a lista de IPs
+    qsort(sourceIPs, len - 1, 18, strcmp);
+
+    // calcula a probabilidade do primeiro ip da lista ordenada
+    result=prob1(sourceIPs, sourceIPs,len);
+//    printf("%lf\n",result);
+
+//    printf("prob de %s é %f\n",sourceIPs,result);
+    // acumula ...e no final o acumulado tem q dar 1
+    total+=result;
+
+    // varre o restante da lista ordenada, por isso i comeca em 1
+    for (i=1;i<(len-1);i++) {
+
+      // calcula e acumula a probabilidade do elemento i, caso já não tenha sido calculada, por isso comparação
+      if (strcmp(sourceIPs+18*(i-1),sourceIPs+18*i)) {
+		result=prob1(sourceIPs+18*i, sourceIPs+18*i,len);
+		total+=result*Log2(result);
+      		//printf("prob de %s é %f\n",sourceIPs+18*i,result);
+      }
+
+    }
+
+    return total;
+
+    /*for (i=0;i<(len-1);i++){
+       printf("sourceIPs=%s\n", sourceIPs+18*i);
+    }
+    for (i=0;i<len;i++){
+        for (j=0;j<18;j++){
+
+        result = result +
+        prob1(sourceIPs,
+        *(sourceIPs + 18*i + j),&len) + log2(prob1(sourceIPs,
+        *(sourceIPs + 18*i + j),&len)
+
+);
+        }
+    }*/
+
+    //return result;
+
+
+}
 
 void preProcessing (){
-int i,aux;
+int i,aux,t;
 aux = 0;
-
+t = 0;
 //Awid dataset[600];
 Awid *dataset;
-char url[]="1",nome[20], linha[700];
+char url[]="teste.txt",nome[20], linha[700];
 FILE *arq;
 
 double *frame_time_epoch;
@@ -65,7 +127,7 @@ void     outputStatInfo(char *, struct stat *);
 //			prcharf("%[^,] teve media %.2f\n", testando.a, testando.d);
 
             fseek(arq,0,SEEK_SET);
-            //for(i = 0;i<600;i++){
+
 	    while(!feof(arq)) {
             dataset=realloc(dataset, (i+2)*sizeof(Awid));
             fgets(linha,2000,arq);
@@ -131,35 +193,51 @@ void     outputStatInfo(char *, struct stat *);
             &dataset[i].wlan_qos_txop_dur_req,&dataset[i].wlan_qos_buf_state_indicated1,\
             &dataset[i].data_len,&dataset[i].classification);
 
-//            printf("%d,%d,%d\n",(strcmp(dataset[i].frame_time_epoch,"?") != 0),(strcmp(dataset[i].wlan_da,"?")!= 0),(strcmp(dataset[i].wlan_ra,"?")!= 0));
+
+//            while (!isWindow(atof(dataset[aux2].frame_time_epoch),frame_time_epoch[aux],1.0)){
+//                printf("coisa\n");
+//
+//            }
+
+
                 sourceIPs = malloc(18*sizeof(char));
-                destinationIPs = malloc(18*sizeof(char));
-                destinationIPs = malloc(18*sizeof(char));
+                //destinationIPs = malloc(18*sizeof(char));
+                //destinationIPs = malloc(18*sizeof(char));
                 if((strcmp(dataset[i].frame_time_epoch,"?") != 0) && (strcmp(dataset[i].wlan_da,"?")!= 0) && (strcmp(dataset[i].wlan_ra,"?")!= 0) ){
                     frame_time_epoch=realloc(frame_time_epoch, (aux+1)*sizeof(double));
-                    sourceIPs= realloc(sourceIPs, 18*(aux+1)*sizeof(char) + 18);
-                    destinationIPs= realloc(destinationIPs, 18*(aux+1)*sizeof(char) + 18);
+                    //destinationIPs= realloc(destinationIPs, 18*(aux+1)*sizeof(char) + 18);
                     //printf("tamanho de %d\n", 18*(aux+1)*sizeof(char));
                 	frame_time_epoch[aux] = atof(dataset[i].frame_time_epoch);
 
-                	//printf("%lf\n", frame_time_epoch[aux]);
+                    //printf("%lf\n", frame_time_epoch[0]);
+//                printf("%d\n",isWindow(frame_time_epoch[0],frame_time_epoch[aux],1.0));
 
-                	//printf("%s\n", sourceIPs[1]);
-                	//printf("%s\n", dataset[i].wlan_sa);
-                	strcpy((sourceIPs+18*(aux+1)) ,dataset[i].wlan_sa);
-//                	strcpy(&a ,dataset[i].wlan_sa);
-                	strcpy((destinationIPs +18*(aux+1)),dataset[i].wlan_da);
-                	//printf("%s\n",sourceIPs + 18*(aux+1) );
-                	aux++;
-//                	printf("%lf\n", frame_time_epoch[aux]);
-                	//printf("%s\n", destinationIPs);
-//                	printf("%s\n", sourceIPs);
+                if (!isWindow(frame_time_epoch[t],frame_time_epoch[aux],1.0)){
+
+                    sourceIPs= realloc(sourceIPs, 18*(aux+1)*sizeof(char) + 18);
+                    strcpy((sourceIPs+18*(aux+1)) ,dataset[i].wlan_sa);
+                    aux++;
+//                    treta++;
+//                    printf("coisa,%d\n",treta);
+                      printf("acumulando\n");
+
+                }
+                else{
+                    t = t +i;
+                    printf("formou janela\n");
+                    entropy = sourceIPsEntropy(sourceIPs,aux);
+                }
+
             	}
             	else{
-            	//printf("pulei\n");
+//            	printf("presta n, %d\n", treta);
                 continue;
 
             	}
+                //printf("%d\n", aux);
+               //entropy = sourceIPsEntropy(sourceIPs,20);
+
+
 
             }
     //entropy = sourceIPsEntropy(sourceIPs,aux + 1);

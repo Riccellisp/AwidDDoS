@@ -1,9 +1,10 @@
 #ifndef DEFS_H_INCLUDED
 #define DEFS_H_INCLUDED
     float prob1(char * sourceIPs, char *sourceIP, int len);
-    float sourceIPsEntropy(char *sourceIPs,int len);
     int isWindow (double t0, double t1, double windowLength);
     float sourceIPsVariation(char *sourceIPs);
+    float sourceIPsEntropy(char *sourceIPs,int len);
+
     void preProcessing();
     typedef struct {
     int frame_interface_id;
