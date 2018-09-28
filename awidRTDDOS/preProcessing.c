@@ -7,16 +7,34 @@
 #include <sys/stat.h>
 #include <sys/sysmacros.h>
 
-    static int
-       cmpstringp(const void *p1, const void *p2)
-       {
-           /* The actual arguments to this function are "pointers to
-              pointers to char", but strcmp(3) arguments are "pointers
-              to char", hence the following cast plus dereference */
+static int
+cmpstringp(const void *p1, const void *p2)
+{
+   /* The actual arguments to this function are "pointers to
+      pointers to char", but strcmp(3) arguments are "pointers
+      to char", hence the following cast plus dereference */
 
-           return strcmp(* (char * const *) p1, * (char * const *) p2);
-       }
+   return strcmp(* (char * const *) p1, * (char * const *) p2);
+}
 
+int cstring_cmp(const void *a, const void *b)
+{
+    const char **ia = (const char **)a;
+    const char **ib = (const char **)b;
+    return strcmp(*ia, *ib);
+	/* strcmp functions works exactly as expected from
+	comparison function */
+}
+
+void print_cstring_array(char **array, size_t len)
+{
+    size_t i;
+
+    for(i=0; i<len; i++)
+        printf("%s | ", array[i]);
+
+    putchar('\n');
+}
 
 float sourceIPsEntropy(char *sourceIPs,int len){
 //    size_t len = strlen(sourceIPs);
@@ -26,8 +44,8 @@ float sourceIPsEntropy(char *sourceIPs,int len){
     float total=0.0;
 
     // ordena a lista de IPs
-    qsort(sourceIPs, len - 1, 18, strcmp);
-
+    qsort(sourceIPs, len  , sizeof(char *) , cstring_cmp);
+    printf("chamando prob1");
     // calcula a probabilidade do primeiro ip da lista ordenada
     result=prob1(sourceIPs, sourceIPs,len);
 //    printf("%lf\n",result);
@@ -66,8 +84,6 @@ float sourceIPsEntropy(char *sourceIPs,int len){
     }*/
 
     //return result;
-
-
 }
 
 void preProcessing (){
@@ -224,7 +240,8 @@ void     outputStatInfo(char *, struct stat *);
                 }
                 else{
                     t = t +i;
-                    printf("formou janela\n");
+                    printf("formou janela e aux:%d\n",aux);
+                    printf("%s\n", sourceIPs + t);
                     entropy = sourceIPsEntropy(sourceIPs,aux);
                 }
 
