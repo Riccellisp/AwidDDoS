@@ -269,6 +269,7 @@ void     outputStatInfo(char *, struct stat *);
                     printf("ip %s\n", sourceIPs );
 //                    break;
                     entropy = sourceIPsEntropy(sourceIPs,aux);
+
                     printf("valor de entropia %f\n",entropy);
                     break;
                 }
