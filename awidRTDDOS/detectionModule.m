@@ -1,54 +1,6 @@
-% % parameters
-windowLength = 1;
-threshold = 0.8;
-normalTraffic = [539, 0.005000000000000, 1.319659453970128   ];
+function report = detectionModule(timeByDestination,sourceByDestination,...
+            responseByDestination,windowLength,threshold,normalTraffic)
 
-cd testesplit
-files = dir('new*');
-
-for file=1:length(files)
-    
-    dataset = textread(files(file).name, '%s', 'delimiter', ',','whitespace', '');
-    cd ..
-    interval = 0:((length(dataset)/155)-1);
-    sourceIPs = dataset(79 +155*[interval]);
-    destinationIPs = dataset(77 +155*[interval]);
-    %  Removing invalid IPs
-    sourceIPs = sourceIPs(~strcmp(destinationIPs,'?'));
-    destinationIPs = destinationIPs(~strcmp(destinationIPs,'?'));
-    
-    idx = find(~strcmp(destinationIPs,'?'));
-    
-    %  Filtering time
-    time = str2double(dataset(4 +155*[interval]));
-    time = time(idx);
-    %   Filtering responses
-    response = dataset(155 +155*[interval]);
-    response = response(idx);
-    %     keyboard;
-    
-%     n = 0;
-%     nextPkt = 1;
-%     janelas = 0;
-%     numeroAtaques = 0;
-%     numeroNormal = 0;
-%     flagAttack = 0;
-%     flagNormal = 0;
-%     falsePositive = 0;
-%     falseNegative = 0;
-%     errors = 0;
-    
-    %     todo
-    uniqueDestinations =  unique(destinationIPs);
-    
-    for k = 1:length(uniqueDestinations)
-        idxDestination = find(strcmp(destinationIPs, uniqueDestinations(k)));
-        
-        sourceByDestination = (sourceIPs(idxDestination));
-        timeByDestination = time(idxDestination);
-        responseByDestination = response(idxDestination);
-%         keyboard;
-% % % % % %         
         n = 0;
         nextPkt = 1;
         janelas = 0;
@@ -58,20 +10,17 @@ for file=1:length(files)
         flagNormal = 0;
         falsePositive = 0;
         falseNegative = 0;
-        errors = 0;
+        errors = 0;        
         
-        
-        
-        while(nextPkt < length(idx))
+        while(nextPkt < length(timeByDestination))
             %       Splitting in seconds
-            for i = nextPkt:length(idx)
+            for i = nextPkt:length(timeByDestination)
                 if(~isWindow(timeByDestination(nextPkt),timeByDestination(i),windowLength))
                     n = n + 1;
                 else
                     break;
                 end
             end
-            keyboard
             %       Geting true responses
             if (~isempty(find(strcmp(responseByDestination(nextPkt:n),'normal') ~= 1 )))
                 disp('tem ataque real');
@@ -86,7 +35,7 @@ for file=1:length(files)
             varSourceIPs = length(unique([sourceByDestination(nextPkt:n)]))/length(sourceByDestination);
             packetRate = n;
             %         Detection Module
-            NaHidModule = NaHid([packetRate varSourceIPs entropySourceIPs],normalTraffic);
+            NaHidModule(janelas+1) = NaHid([packetRate varSourceIPs entropySourceIPs],normalTraffic);
 
             janelas = janelas + 1;
             nextPkt = n + 1;
@@ -118,15 +67,16 @@ for file=1:length(files)
                     %                 Getting false negatives and errors
                     falseNegative = falseNegative + 1;
                     errors = errors + 1;
-                end
-                %             plotResultsAwid(NaHidModule,threshold,entropySourceIPs,varSourceIPs,packetRate);
-                
+                end                
             end
+        end
             
             %       Getting detection rate
             accuracy = (1 - errors/janelas);
             
-        end
-    end
-    cd testesplit
+            report = {numeroAtaques, numeroNormal,falsePositive,falseNegative,...
+                accuracy,NaHidModule};
+            
+        
+
 end
