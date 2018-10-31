@@ -41,9 +41,9 @@ function report = detectionModule(timeByDestination,sourceByDestination,...
             nextPkt = n + 1;
             
             if(NaHidModule <  threshold)
-                disp('traffic');
-                disp(janelas);
-                disp('atack');
+%                 disp('traffic');
+%                 disp(janelas);
+%                 disp('atack');
                 numeroAtaques = numeroAtaques + 1;
                 
                 %                 Getting false negatives and errors
@@ -56,9 +56,9 @@ function report = detectionModule(timeByDestination,sourceByDestination,...
                 
                 
             else
-                disp('traffic');
-                disp(janelas);
-                disp('normal');
+%                 disp('traffic');
+%                 disp(janelas);
+%                 disp('normal');
                 
                 normalTraffic = [packetRate varSourceIPs entropySourceIPs];
                 numeroNormal = numeroNormal+ 1;
@@ -72,11 +72,11 @@ function report = detectionModule(timeByDestination,sourceByDestination,...
         end
             
             %       Getting detection rate
-            accuracy = (1 - errors/janelas);
+            accuracy = (1 - (errors/janelas));
             
             report = {numeroAtaques, numeroNormal,falsePositive,falseNegative,...
-                accuracy,NaHidModule};
-            
+                accuracy};
+%             keyboard
         
 
 end

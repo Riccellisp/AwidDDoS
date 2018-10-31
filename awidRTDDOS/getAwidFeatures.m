@@ -33,8 +33,9 @@ for file=1:length(files)
         timeByDestination = time(idxDestination);
         responseByDestination = response(idxDestination);
 %% Calling detection Module
-        detection = detectionModule(timeByDestination,sourceByDestination,...
-            responseByDestination,windowLength,threshold,normalTraffic);
+        detection{file,k} = detectionModule(timeByDestination,sourceByDestination,...
+            responseByDestination,windowLength,threshold,normalTraffic)
+%         keyboard
     end
     cd testesplit
 end
