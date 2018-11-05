@@ -51,6 +51,7 @@ else
         entropySourceIPs(janelas + 1)= entropy2([sourceByDestination(nextPkt:n)]);
         varSourceIPs(janelas + 1) = length(unique([sourceByDestination(nextPkt:n)]))/length(sourceByDestination);
         packetRate(janelas + 1) = n;
+
         %         Detection Module
         NaHidModule(janelas+1) = NaHid([packetRate(janelas + 1)...
             varSourceIPs(janelas + 1) entropySourceIPs(janelas + 1)],normalTraffic);

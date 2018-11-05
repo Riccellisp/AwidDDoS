@@ -33,8 +33,11 @@ for file=1:length(files)
         timeByDestination = time(idxDestination);
         responseByDestination = response(idxDestination);
 %% Calling detection Module
+%         numeroAtaques, numeroNormal,falsePositive,falseNegative,...
+%         accuracy,packetRate, varSourceIPs, entropySourceIPs,realWindowResponse
         detection{file,k} = detectionModule(timeByDestination,sourceByDestination,...
             responseByDestination,windowLength,threshold,normalTraffic);
     end
     cd testesplit
 end
+    save('detection.mat','detection');

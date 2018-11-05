@@ -39,7 +39,7 @@ else
         if (~isempty(find(strcmp(responseByDestination(nextPkt:n),'normal') ~= 1 )))
             disp('tem ataque real');
             flagAttack = 1;
-            realWindowResponse(janelas + 1) = 0;
+            realWindowResponse(janelas + 1) = 1;
         else
             flagNormal = 1;
             realWindowResponse(janelas + 1) = 0;
@@ -51,6 +51,11 @@ else
         entropySourceIPs(janelas + 1)= entropy2([sourceByDestination(nextPkt:n)]);
         varSourceIPs(janelas + 1) = length(unique([sourceByDestination(nextPkt:n)]))/length(sourceByDestination);
         packetRate(janelas + 1) = n;
+        
+        if floor( packetRate(janelas + 1) )
+        if packetRate(janelas + 1) > 5000
+            keyboard
+        end
         %         Detection Module
         NaHidModule(janelas+1) = NaHid([packetRate(janelas + 1)...
             varSourceIPs(janelas + 1) entropySourceIPs(janelas + 1)],normalTraffic);
