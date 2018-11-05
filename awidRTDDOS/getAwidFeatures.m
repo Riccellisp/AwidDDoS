@@ -3,8 +3,8 @@ windowLength = 1;
 threshold = 0.8;
 normalTraffic = [539, 0.005000000000000, 1.319659453970128   ];
 
-cd testesplit
-files = dir('new*');
+cd testesplit3
+files = dir('attack1*');
 
 for file=1:length(files)    
     dataset = textread(files(file).name, '%s', 'delimiter', ',','whitespace', '');
@@ -38,6 +38,6 @@ for file=1:length(files)
         detection{file,k} = detectionModule(timeByDestination,sourceByDestination,...
             responseByDestination,windowLength,threshold,normalTraffic);
     end
-    cd testesplit
+    cd testesplit3
 end
-    save('detection.mat','detection');
+    save('detection3.mat','detection');

@@ -1,6 +1,5 @@
 function report = detectionModule(timeByDestination,sourceByDestination,...
     responseByDestination,windowLength,threshold,normalTraffic)
-
 n = 0;
 nextPkt = 1;
 janelas = 0;
@@ -40,6 +39,7 @@ else
             disp('tem ataque real');
             flagAttack = 1;
             realWindowResponse(janelas + 1) = 1;
+            keyboard
         else
             flagNormal = 1;
             realWindowResponse(janelas + 1) = 0;
