@@ -35,11 +35,12 @@ else
             end
         end
         %       Geting true responses
+%         keyboard
         if (~isempty(find(strcmp(responseByDestination(nextPkt:n),'normal') ~= 1 )))
             disp('tem ataque real');
             flagAttack = 1;
             realWindowResponse(janelas + 1) = 1;
-            keyboard
+%             keyboard
         else
             flagNormal = 1;
             realWindowResponse(janelas + 1) = 0;
